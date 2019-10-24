@@ -31,12 +31,12 @@ export class Configuration {
     this.defaultCollateralPrice = '1';
     this.erc20Contracts = {};
     this.jsonrpc = '2.0';
-    this.marketContracts = fetchConfig('MARKET_CONTRACTS')
+    this.marketContracts = fetchConfig('MARKET_CONTRACTS', overrides.MARKET_CONTRACTS)
       .split(',')
       .map(addy => Utils.validateHexString(addy));
-    this.privateKey = fetchConfig('PRIVATE_KEY');
+    this.privateKey = fetchConfig('PRIVATE_KEY', overrides.PRIVATE_KEY);
     this.provider = overrides.provider || ethers.getDefaultProvider();
-    this.receiver = fetchConfig('RECEIVER', '', true);
+    this.receiver = fetchConfig('RECEIVER', overrides.RECEIVER, true);
     this.wallet = new ethers.Wallet(this.privateKey, this.provider);
 
     this.signer = this.signer.bind(this);

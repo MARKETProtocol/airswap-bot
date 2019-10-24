@@ -1,6 +1,7 @@
 import { Configuration } from './Configuration.js';
+import { apps } from '../ecosystem.config.js';
 
-const config = new Configuration();
+const config = new Configuration(apps[0].env);
 
 const main = async () => {
   const tokenToSend = process.env.TOKEN_TO_SEND;
