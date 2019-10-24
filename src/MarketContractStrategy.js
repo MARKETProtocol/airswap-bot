@@ -157,7 +157,7 @@ export class MarketContractStrategy {
   async validateBalances({ makerAmount, makerToken, takerAddress, takerAmount, takerToken }) {
     if (!makerAmount && !takerAmount) {
       console.log('NULL amount order halted');
-      return false;
+      return { error: 'Cannot fill an order for 0 tokens' };
     }
 
     const {
@@ -171,7 +171,7 @@ export class MarketContractStrategy {
 
     if (makerAmountD.isZero()) {
       console.log('Zero amount order request halted');
-      return false;
+      return { error: 'Cannot fill an order for 0 tokens' };
     }
 
     const makerBalance = await getBalance(this.config.walletAddress, makerToken, this.config);
@@ -184,7 +184,9 @@ export class MarketContractStrategy {
         '<',
         makerBalance.toFixed(),
       );
-      return false;
+      return {
+        error: 'Sorry but we\ve temporarily run low on supply and cannot fill your order.',
+      };
     }
 
     const takerBalance = await getBalance(takerAddress, takerToken, this.config);
@@ -198,7 +200,7 @@ export class MarketContractStrategy {
         '<',
         takerAmountI.toFixed(),
       );
-      return false;
+      return { error: 'Sorry but your balance is too low to place that order.' };
     }
 
     return {
