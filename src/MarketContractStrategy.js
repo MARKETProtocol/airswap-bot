@@ -144,10 +144,10 @@ export class MarketContractStrategy {
     const spread = await this.contract.bandSpread();
 
     if (spread.isLessThan(150)) {
-      return wrapAsBigNumber(2.5);
+      return wrapAsBigNumber(100);
     }
 
-    return wrapAsBigNumber(0.1);
+    return wrapAsBigNumber(100);
   }
 
   async maxSale() {

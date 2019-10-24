@@ -6,8 +6,8 @@ import { wrapAsBigNumber } from './utils/wrapAsBigNumber';
 
 export class MarketContractPricer {
   constructor(strategy) {
-    this.minSpread = new BigNumber(0);
-    this.spreadWidth = new BigNumber(0.0075);
+    this.minSpread = new BigNumber(4);
+    this.spreadWidth = new BigNumber(0.005);
     this.strategy = strategy;
   }
 
