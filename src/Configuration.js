@@ -36,6 +36,7 @@ export class Configuration {
       .map(addy => Utils.validateHexString(addy));
     this.privateKey = fetchConfig('PRIVATE_KEY');
     this.provider = overrides.provider || ethers.getDefaultProvider();
+    this.receiver = fetchConfig('RECEIVER', '', true);
     this.wallet = new ethers.Wallet(this.privateKey, this.provider);
 
     this.signer = this.signer.bind(this);

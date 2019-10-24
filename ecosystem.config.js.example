@@ -13,6 +13,7 @@ module.exports = {
     env: {
       NODE_ENV: 'development',
       PRIVATE_KEY: 'YOUR PRIVATE KEY',
+      RECEIVER: 'YOUR WALLET',
       MARKET_CONTRACTS: '0xa2f59010040fb9fb3fb2af03a80276b21342d5fc,0x7d774b826c9967493c6c0e87d7824a6a885f1840'
     }
   }]
